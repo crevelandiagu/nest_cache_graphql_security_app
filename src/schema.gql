@@ -1,0 +1,147 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type EstrellamichelinEntity {
+  id: String!
+  calificacion: Float!
+  fecha: String!
+  restaurante: [RestauranteEntity!]!
+}
+
+type ProductoculinarioEntity {
+  id: String!
+  name: String!
+  descripcion: String!
+  historia: String!
+  categoria: String!
+  receta: [RecetaEntity!]!
+}
+
+type RecetaEntity {
+  id: String!
+  name: String!
+  descripcion: String!
+  imagen: String!
+  procesoPreparacion: String!
+  video: String!
+  productoculinario: [ProductoculinarioEntity!]!
+  culturagastronomica: CulturagastronomicaEntity!
+}
+
+type CiudadEntity {
+  id: String!
+  name: String!
+  description: String!
+  pais: PaisEntity!
+}
+
+type PaisEntity {
+  id: String!
+  name: String!
+  capital: String!
+  region: String!
+  ciudad: [CiudadEntity!]!
+  culturagastronomica: [CulturagastronomicaEntity!]!
+  restaurante: [RestauranteEntity!]!
+}
+
+type CulturagastronomicaEntity {
+  id: String!
+  pais: PaisEntity!
+  nombre: String!
+  descripcion: String!
+  receta: [RecetaEntity!]!
+  restaurante: [RestauranteEntity!]!
+}
+
+type RestauranteEntity {
+  id: String!
+  name: String!
+  pais: [PaisEntity!]!
+  ciudad: String!
+  estrellamichelin: [EstrellamichelinEntity!]!
+  culturagastronomica: [CulturagastronomicaEntity!]!
+}
+
+type Query {
+  restaurantes: [RestauranteEntity!]!
+  restaurante(id: String!): RestauranteEntity!
+  culturasGastronomicas: [CulturagastronomicaEntity!]!
+  culturaGastronomica(id: String!): CulturagastronomicaEntity!
+  estrellasmichelin: [EstrellamichelinEntity!]!
+  estrellamichelin(id: String!): EstrellamichelinEntity!
+  paises: [PaisEntity!]!
+  pais(id: String!): PaisEntity!
+  ciudades: [CiudadEntity!]!
+  ciudad(id: String!): CiudadEntity!
+  recetas: [RecetaEntity!]!
+  receta(id: String!): RecetaEntity!
+  productosculinarios: [ProductoculinarioEntity!]!
+  productoculinario(id: String!): ProductoculinarioEntity!
+}
+
+type Mutation {
+  createRestaurante(restaurante: RestauranteDto!): RestauranteEntity!
+  updateRestaurante(id: String!, restaurante: RestauranteDto!): RestauranteEntity!
+  deleteRestaurante(id: String!): String!
+  createCulturaGastronomica(culturaGastronomica: CulturagastronomicaDto!): CulturagastronomicaEntity!
+  updateCulturaGastronomica(id: String!, culturaGastronomica: CulturagastronomicaDto!): CulturagastronomicaEntity!
+  deleteCulturaGastronomica(id: String!): String!
+  createEstrellamichelin(estrellamichelin: EstrellamichelinDto!): EstrellamichelinEntity!
+  updateEstrellamichelin(id: String!, estrellamichelin: EstrellamichelinDto!): EstrellamichelinEntity!
+  deleteEstrellamichelin(id: String!): String!
+  createPais(pais: PaisDto!): PaisEntity!
+  updatePais(id: String!, pais: PaisDto!): PaisEntity!
+  deletePais(id: String!): String!
+  createCiudad(ciudad: CiudadDto!): CiudadEntity!
+  updateCiudad(id: String!, ciudad: CiudadDto!): CiudadEntity!
+  deleteCiudad(id: String!): String!
+  createReceta(receta: RecetaDto!): RecetaEntity!
+  updateReceta(id: String!, receta: RecetaDto!): RecetaEntity!
+  deleteReceta(id: String!): String!
+  createProductoculinario(productoculinario: ProductoculinarioDto!): ProductoculinarioEntity!
+  updateProductoculinario(id: String!, productoculinario: ProductoculinarioDto!): ProductoculinarioEntity!
+  deleteProductoculinario(id: String!): String!
+}
+
+input RestauranteDto {
+  ciudad: String!
+  name: String!
+}
+
+input CulturagastronomicaDto {
+  nombre: String!
+  descripcion: String!
+}
+
+input EstrellamichelinDto {
+  calificacion: Float!
+  fecha: String!
+}
+
+input PaisDto {
+  name: String!
+  capital: String!
+  region: String!
+}
+
+input CiudadDto {
+  name: String!
+  description: String!
+}
+
+input RecetaDto {
+  name: String!
+  descripcion: String!
+  imagen: String!
+  procesoPreparacion: String!
+  video: String!
+}
+
+input ProductoculinarioDto {
+  name: String!
+  descripcion: String!
+  historia: String!
+  categoria: String!
+}
